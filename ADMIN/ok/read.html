@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Usernames</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+    </style>
+    <script>
+        function readUsernames() {
+            // Perform an AJAX request to fetch the usernames and their details
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle the response and update the HTML table
+                    var usernamesTable = document.getElementById("usernamesTable");
+                    usernamesTable.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "read.php", true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Read Usernames</h1>
+    
+    <button class="button" onclick="readUsernames()">Load Usernames</button>
+    
+    <div id="usernamesTable"></div>
+</body>
+</html>

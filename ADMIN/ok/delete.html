@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CRUD Operations</h1>
+    
+    <form action="delete.php" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" />
+        </div>
+    
+        <button type="submit" class="button">Delete Record</button>
+    </form>
+    
+    <a class="button" href="create.php">Create Record</a>
+    <a class="button" href="read.php">Read Records</a>
+    <a class="button" href="update.php">Update Record</a>
+</body>
+</html>

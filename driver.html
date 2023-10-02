@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Attendance</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+#login,
+#dashboard {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="time"] {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.querySelector("#login form");
+  const dashboardSection = document.querySelector("#dashboard");
+  const shiftsList = document.querySelector("#shiftsList");
+  const attendanceForm = document.querySelector("#attendanceForm");
+
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Perform login logic here
+    // You can use AJAX or fetch() to send a request to the PHP backend
+
+    // Once the login is successful, hide the login section and show the dashboard section
+    loginForm.parentNode.classList.add("hidden");
+    dashboardSection.classList.remove("hidden");
+
+    // Simulating the dynamic addition of shifts
+    const shifts = [
+      { id: 1, date: "July 3, 2023", time: "8:00 AM" },
+      { id: 2, date: "July 4, 2023", time: "2:00 PM" },
+      { id: 3, date: "July 5, 2023", time: "10:00 AM" },
+    ];
+
+    shifts.forEach(function (shift) {
+      const shiftItem = document.createElement("li");
+      shiftItem.textContent = `Shift ${shift.id} - ${shift.date}, ${shift.time}`;
+      shiftsList.appendChild(shiftItem);
+    });
+  });
+
+  attendanceForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Retrieve the attendance date and time values
+    const attendanceDate = document.querySelector("#attendanceDate").value;
+    const attendanceTime = document.querySelector("#attendanceTime").value;
+
+    // Perform attendance submission logic here
+    // You can use AJAX or fetch() to send a request to the PHP backend
+
+    // Clear the form fields after submission
+    attendanceForm.reset();
+  });
+});
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Driver Attendance</h1>
+  </header>
+
+  <main>
+    <section id="login">
+      <h2>Login</h2>
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <h2>Driver Dashboard</h2>
+      <div id="shifts">
+        <h3>Upcoming Shifts</h3>
+        <ul id="shiftsList">
+          <!-- Shifts will be dynamically added here -->
+        </ul>
+      </div>
+
+      <div id="attendance">
+        <h3>Mark Attendance</h3>
+        <form id="attendanceForm">
+          <label for="attendanceDate">Date:</label>
+          <input type="date" id="attendanceDate" name="attendanceDate" required>
+
+          <label for="attendanceTime">Time:</label>
+          <input type="time" id="attendanceTime" name="attendanceTime" required>
+
+          <button type="submit">Mark Attendance</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Bus Company. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
